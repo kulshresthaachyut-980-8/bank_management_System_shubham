@@ -9,7 +9,7 @@ char account_number[12];
 char City[50];
 char mobile_number[10];
 
-void withdraw() // Withdraw Function
+void withdraw()                                                       // Withdraw Function
 {
     if (acc_created == 1)
     {
@@ -21,19 +21,20 @@ void withdraw() // Withdraw Function
             if (withdraw_amount <= balance && withdraw_amount >= 0)
             {
                 balance -= withdraw_amount;
+                printf("\n Rs.%ld Debited From your A/c %s",withdraw_amount,account_number);
             }
             else
             {
                 printf("\nAccount Withdraw Amount Limit Reached!");
             }
-        } while (withdraw_amount <= balance);
+        } while (withdraw_amount > balance);
     }
     else
     {
         printf("\nCreate Account First!");
     }
 }
-void deposit() // Deposit Function
+void deposit()                                                                  // Deposit Function
 {
     long int deposite_amount = 0;
     if (acc_created == 1)
@@ -61,7 +62,7 @@ void deposit() // Deposit Function
         printf("\nCreate Account First!");
     }
 }
-void create_account() // Create A/c Fnuction
+void create_account()                                                          // Create A/c Fnuction
 {
     long int first_deposit;
     int validation;
@@ -82,7 +83,7 @@ void create_account() // Create A/c Fnuction
         }
 
     } while (validation == 0);
-    do // last name Validation
+    do                                                                         // last name Validation
     {
         validation = 1;
         printf("\n Enter Your Last Name: ");
@@ -99,10 +100,11 @@ void create_account() // Create A/c Fnuction
 
     } while (validation == 0);
 
-    do // Phone Number Validation
+    do                                                                         // Phone Number Validation
     {
         validation = 1;
 
+        printf("\n *Please Do Not Use Country Code before Mobile Number!");
         printf("\n Enter Your Phone Number: ");
         scanf("%s", &mobile_number);
 
@@ -124,10 +126,10 @@ void create_account() // Create A/c Fnuction
 
     } while (validation == 0);
 
-    printf("\n Enter Your Current City Name You Live: "); // City input
+    printf("\n Enter Your Current City Name You Live: ");                            // City input
     scanf(" %s", &City);
     printf("\n Your Verification Is Successful.\n");
-    do // A/c Number Validation
+    do                                                                         // A/c Number Validation
     {
         validation = 1;
 
@@ -154,7 +156,7 @@ void create_account() // Create A/c Fnuction
 
     } while (validation == 0);
 
-    printf("\nYour A/c Has Been Created Successfully"); // first Deposit
+    printf("\nYour A/c Has Been Created Successfully");                       // first Deposit
     acc_created = 1;
     if (acc_created == 1)
     {
@@ -180,8 +182,31 @@ void create_account() // Create A/c Fnuction
         printf("\n Create Account First!");
     }
 }
-
-
+void display_account_details()                                                         // Display A/c
+{
+    if (acc_created == 1)
+    {
+        printf("\n Name: %s %s", first_name, last_name);
+        printf("\n Your Account Number : %s", account_number);
+        printf("\n City : %s", City);
+        printf("\n Mobile Number: %s", mobile_number);
+    }
+    else
+    {
+        printf("\nCreate Account First!");
+    }
+}
+void currentbalance()                                                                 // Current Balance
+{
+    if (acc_created == 1)
+    {
+        printf("\n Current Balance = %ld ", balance);
+    }
+    else
+    {
+        printf("\nCreate Account First!");
+    }
+}
 int main()
 {
     char character_options;
@@ -189,7 +214,7 @@ int main()
     printf("\t\nPROJECT:-  BANKING MANAGEMENT SYSTEM\n");
     printf("\n Wellcome to Shubham's Bank Management Project. ");
     while (1)
-    { // Menu
+    {                                                                                               // Menu
         printf("\n---------------------------------------");
         printf("\n\t Create Account  -> 'A' ");
         printf("\n\t Deposit         -> 'D' ");
@@ -210,9 +235,17 @@ int main()
         {
             deposit();
         }
-         else if (character_options == 'W')
+        else if (character_options == 'W')
         {
             withdraw();
+        }
+        else if (character_options == 'C')
+        {
+            currentbalance();
+        }
+        else if (character_options == 'S')
+        {
+            display_account_details();
         }
 
         else if (character_options == 'X')
@@ -220,6 +253,7 @@ int main()
             if (acc_created == 1)
             {
                 printf("\nThank You For Using Our Bank Services.");
+                break;
             }
             else
             {
