@@ -9,6 +9,30 @@ char account_number[12];
 char City[50];
 char mobile_number[10];
 
+void withdraw() // Withdraw Function
+{
+    if (acc_created == 1)
+    {
+        long int withdraw_amount;
+        do
+        {
+            printf("\n Enter How Much Money you Want to Withdraw: ");
+            scanf("%ld", &withdraw_amount);
+            if (withdraw_amount <= balance && withdraw_amount >= 0)
+            {
+                balance -= withdraw_amount;
+            }
+            else
+            {
+                printf("\nAccount Withdraw Amount Limit Reached!");
+            }
+        } while (withdraw_amount <= balance);
+    }
+    else
+    {
+        printf("\nCreate Account First!");
+    }
+}
 void deposit() // Deposit Function
 {
     long int deposite_amount = 0;
@@ -185,6 +209,10 @@ int main()
         else if (character_options == 'D')
         {
             deposit();
+        }
+         else if (character_options == 'W')
+        {
+            withdraw();
         }
 
         else if (character_options == 'X')
