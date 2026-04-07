@@ -7,9 +7,10 @@ char first_name[50];
 char last_name[50];
 char account_number[12];
 char City[50];
-char mobile_number[10];
+char mobile_number[11];
 
-void withdraw()                                                       // Withdraw Function
+// Withdraw Function
+void withdraw()
 {
     if (acc_created == 1)
     {
@@ -21,7 +22,7 @@ void withdraw()                                                       // Withdra
             if (withdraw_amount <= balance && withdraw_amount >= 0)
             {
                 balance -= withdraw_amount;
-                printf("\n Rs.%ld Debited From your A/c %s",withdraw_amount,account_number);
+                printf("\n Rs.%ld Debited From your A/c %s", withdraw_amount, account_number);
             }
             else
             {
@@ -34,7 +35,8 @@ void withdraw()                                                       // Withdra
         printf("\nCreate Account First!");
     }
 }
-void deposit()                                                                  // Deposit Function
+// Deposit Function
+void deposit()
 {
     long int deposite_amount = 0;
     if (acc_created == 1)
@@ -44,7 +46,7 @@ void deposit()                                                                  
         {
 
             printf("\n Enter How Much Money you Want to Deposit ");
-            scanf("%ld", &deposite_amount);
+            scanf("%ld", deposite_amount);
 
             if (deposite_amount >= 100)
             {
@@ -62,15 +64,17 @@ void deposit()                                                                  
         printf("\nCreate Account First!");
     }
 }
-void create_account()                                                          // Create A/c Fnuction
+//  Create A/c Fnuction
+void create_account()
 {
     long int first_deposit;
     int validation;
+    // first name validation
     do
     {
         validation = 1;
         printf("\n Enter Your First Name: ");
-        scanf(" %s", &first_name);
+        scanf(" %s", first_name);
 
         for (int i = 0; i < strlen(first_name); i++)
         {
@@ -83,11 +87,12 @@ void create_account()                                                          /
         }
 
     } while (validation == 0);
-    do                                                                         // last name Validation
+    // last name Validation
+    do
     {
         validation = 1;
         printf("\n Enter Your Last Name: ");
-        scanf(" %s", &last_name);
+        scanf(" %s", last_name);
         for (int i = 0; i < strlen(last_name); i++)
         {
             if (!((last_name[i] >= 'a' && last_name[i] <= 'z') || (last_name[i] >= 'A' && last_name[i] <= 'Z')))
@@ -100,13 +105,14 @@ void create_account()                                                          /
 
     } while (validation == 0);
 
-    do                                                                         // Phone Number Validation
+    // Phone Number Validation
+    do
     {
         validation = 1;
 
-        printf("\n *Please Do Not Use Country Code before Mobile Number!");
+        printf("\n *Please Do Not Use Country Code before Mobile Number!\n");
         printf("\n Enter Your Phone Number: ");
-        scanf("%s", &mobile_number);
+        scanf("%s", mobile_number);
 
         if (strlen(mobile_number) != 10)
         {
@@ -126,15 +132,17 @@ void create_account()                                                          /
 
     } while (validation == 0);
 
-    printf("\n Enter Your Current City Name You Live: ");                            // City input
-    scanf(" %s", &City);
+    // City input
+
+    printf("\nEnter Your Current City Name You Live: ");
+    scanf(" %s", City);
     printf("\n Your Verification Is Successful.\n");
-    do                                                                         // A/c Number Validation
+    do // A/c Number Validation
     {
         validation = 1;
 
         printf("\nCreate A 11 digits Account Number: ");
-        scanf(" %s", &account_number);
+        scanf(" %s", account_number);
 
         if (strlen(account_number) != 11)
         {
@@ -156,7 +164,8 @@ void create_account()                                                          /
 
     } while (validation == 0);
 
-    printf("\nYour A/c Has Been Created Successfully");                       // first Deposit
+    // first Deposit
+    printf("\nYour A/c Has Been Created Successfully");
     acc_created = 1;
     if (acc_created == 1)
     {
@@ -182,7 +191,9 @@ void create_account()                                                          /
         printf("\n Create Account First!");
     }
 }
-void display_account_details()                                                         // Display A/c
+
+// Display A/c
+void display_account_details()
 {
     if (acc_created == 1)
     {
@@ -196,7 +207,9 @@ void display_account_details()                                                  
         printf("\nCreate Account First!");
     }
 }
-void currentbalance()                                                                 // Current Balance
+
+// Current Balance
+void currentbalance()
 {
     if (acc_created == 1)
     {
@@ -212,9 +225,9 @@ int main()
     char character_options;
 
     printf("\t\nPROJECT:-  BANKING MANAGEMENT SYSTEM\n");
-    printf("\n Wellcome to Shubham's Bank Management Project. ");
+    printf("\n Wellcome to Shubham's Bank Management Project. "); // Menu
     while (1)
-    {                                                                                               // Menu
+    {
         printf("\n---------------------------------------");
         printf("\n\t Create Account  -> 'A' ");
         printf("\n\t Deposit         -> 'D' ");
